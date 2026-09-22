@@ -1,0 +1,10 @@
+**/bin/
+**/obj/
+**/TestResults/
+.git/
+.github/
+.idea/
+.vs/
+k8s/
+test/
+*.md
