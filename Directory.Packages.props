@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup Label="Contratos">
-    <PackageVersion Include="PosTech.Fiap.CloudGames.Contracts" Version="0.1.0" />
+    <PackageVersion Include="PosTech.Fiap.CloudGames.Contracts" Version="1.0.0" />
   </ItemGroup>
 
   <ItemGroup Label="Aplicacao">
