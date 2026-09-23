@@ -37,7 +37,11 @@ Diretrizes:
 - **Mensagens de erro:** sempre em `Properties/*Resources.resx` da propria camada, nunca string literal.
 - **DI:** cada camada registra seus servicos no seu `FcgPayments<Camada>Module`; `Program.cs` apenas compoe os 4 modulos.
 - **Eventos de integracao:** publicados via `IIntegrationEventPublisher` antes do `SaveChangesAsync` - o outbox grava na mesma transacao.
-- **Consumers:** ficam na WebApi, delegam para um `Command` via MediatR e sao idempotentes (inbox do MassTransit).
+- **Consumers:** ficam na WebApi, delegam para um `Command` via MediatR e sao idempotentes (inbox do MassTransit). Cada consumer tem um `ConsumerDefinition` com `EndpointName` igual a constante de `Fcg.Contracts.Messaging.QueueNames`.
+- **Contratos:** eventos, filas, claims e papeis vem do pacote `PosTech.Fiap.CloudGames.Contracts`; nunca redefina localmente.
+- **Usuario autenticado:** injete `ICurrentUser` (Application/_Shared/Security), que le as claims `sub`, `email`, `name` e `role` do token.
+- **Erros HTTP:** `ValidationException` 400, `UnauthorizedException` 401, `ForbiddenException` 403, `NotFoundException` 404, `ConflictException` 409, `BusinessException` 422.
+- **JSON:** camelCase e enums como string.
 
 Exemplo de caso de uso:
 

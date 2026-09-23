@@ -15,6 +15,10 @@
     <PackageVersion Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="10.0.12" />
   </ItemGroup>
 
+  <ItemGroup Label="Contratos">
+    <PackageVersion Include="PosTech.Fiap.CloudGames.Contracts" Version="0.1.0" />
+  </ItemGroup>
+
   <ItemGroup Label="Aplicacao">
     <PackageVersion Include="MediatR" Version="12.5.0" />
     <PackageVersion Include="FluentValidation" Version="12.1.1" />

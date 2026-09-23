@@ -23,7 +23,10 @@ internal sealed class GlobalExceptionHandler : IExceptionHandler
         var (status, title) = exception switch
         {
             ValidationException => (StatusCodes.Status400BadRequest, WebApiResources.RequisicaoInvalida),
+            UnauthorizedException => (StatusCodes.Status401Unauthorized, WebApiResources.NaoAutenticado),
+            ForbiddenException => (StatusCodes.Status403Forbidden, WebApiResources.AcessoNegado),
             NotFoundException => (StatusCodes.Status404NotFound, WebApiResources.RecursoNaoEncontrado),
+            ConflictException => (StatusCodes.Status409Conflict, WebApiResources.ConflitoDeEstado),
             BusinessException => (StatusCodes.Status422UnprocessableEntity, WebApiResources.RegraDeNegocioViolada),
             _ => (StatusCodes.Status500InternalServerError, WebApiResources.ErroInesperado)
         };

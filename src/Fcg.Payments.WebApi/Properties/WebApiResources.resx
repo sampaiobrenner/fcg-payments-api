@@ -15,6 +15,15 @@
   <data name="RequisicaoInvalida" xml:space="preserve">
     <value>A requisição possui dados inválidos.</value>
   </data>
+  <data name="NaoAutenticado" xml:space="preserve">
+    <value>Não autenticado.</value>
+  </data>
+  <data name="AcessoNegado" xml:space="preserve">
+    <value>Acesso negado.</value>
+  </data>
+  <data name="ConflitoDeEstado" xml:space="preserve">
+    <value>A operação conflita com o estado atual do recurso.</value>
+  </data>
   <data name="RecursoNaoEncontrado" xml:space="preserve">
     <value>Recurso não encontrado.</value>
   </data>
