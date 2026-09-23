@@ -1,0 +1,7 @@
+# Revisores solicitados automaticamente nos PRs (ver wiki > Como trabalhamos).
+# Responsavel pela frente payments-api:
+*                 @idlucassanti
+# Plataforma (Docker, Kubernetes e CI) revisa junto:
+/Dockerfile       @idlucassanti @sampaiobrenner
+/k8s/             @idlucassanti @sampaiobrenner
+/.github/         @sampaiobrenner
