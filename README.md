@@ -78,6 +78,16 @@ dotnet ef migrations add <Nome> -p src/Fcg.Payments.Infrastructure -s src/Fcg.Pa
 dotnet test
 ```
 
+## CI/CD
+
+Workflow unico [`ci.yml`](.github/workflows/ci.yml):
+
+| Job | Quando | O que faz |
+|---|---|---|
+| `build-test` | PR, push na `main`, tags `v*` | restore, build, testes com cobertura e analise no SonarCloud (projeto `sampaiobrenner_fcg-payments-api`, requer o secret `SONAR_TOKEN`) |
+| `docker` | PR | build da imagem |
+| `publish` | push na `main` e tags `v*`, apos os testes | publica `ghcr.io/sampaiobrenner/fcg-payments-api` (`latest`, `sha-<commit>`, semver) usando o [`docker-publish.yml`](https://github.com/sampaiobrenner/fcg-orchestration/blob/main/.github/workflows/docker-publish.yml) do `fcg-orchestration` |
+
 ## Docker
 
 ```bash
@@ -85,8 +95,6 @@ docker build -t fcg-payments-api .
 ```
 
 Imagem multi-stage (`sdk:10.0` -> `aspnet:10.0`), usuario non-root, porta `8080`.
-
-A cada push na `main` (e tag `v*`) a imagem e publicada em `ghcr.io/sampaiobrenner/fcg-payments-api` pelo workflow [`docker.yml`](.github/workflows/docker.yml), que reutiliza o [`docker-publish.yml`](https://github.com/sampaiobrenner/fcg-orchestration/blob/main/.github/workflows/docker-publish.yml) do `fcg-orchestration`.
 
 ## Kubernetes
 
