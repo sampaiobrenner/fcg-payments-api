@@ -1,3 +1,5 @@
+using System.Text.Json.Serialization;
+using Fcg.Payments.Application._Shared.Security;
 using Fcg.Payments.Domain._Shared.Modules;
 using Fcg.Payments.Infrastructure._Shared.Context;
 using Fcg.Payments.WebApi._Shared.Endpoints;
@@ -15,6 +17,10 @@ public sealed class FcgPaymentsWebApiModule : IModule
         services.AddProblemDetails();
         services.AddExceptionHandler<GlobalExceptionHandler>();
         services.AddOpenApi();
+        services.ConfigureHttpJsonOptions(options => options.SerializerOptions.Converters.Add(new JsonStringEnumConverter()));
+
+        services.AddHttpContextAccessor();
+        services.AddScoped<ICurrentUser, HttpContextCurrentUser>();
 
         services.AddJwtAuthentication(configuration);
         services.AddMessaging(configuration);

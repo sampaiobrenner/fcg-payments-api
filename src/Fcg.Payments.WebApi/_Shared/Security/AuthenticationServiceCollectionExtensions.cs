@@ -1,4 +1,5 @@
 using System.Text;
+using Fcg.Contracts.Security;
 using Fcg.Payments.WebApi.Properties;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;

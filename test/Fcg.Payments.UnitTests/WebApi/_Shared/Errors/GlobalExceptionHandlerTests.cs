@@ -26,7 +26,10 @@ public class GlobalExceptionHandlerTests
     public static TheoryData<Exception, int> Excecoes => new()
     {
         { new ValidationException([new ValidationFailure("Nome", "obrigatorio")]), StatusCodes.Status400BadRequest },
+        { new UnauthorizedException("credenciais"), StatusCodes.Status401Unauthorized },
+        { new ForbiddenException("acesso"), StatusCodes.Status403Forbidden },
         { new NotFoundException("Jogo", Guid.Empty), StatusCodes.Status404NotFound },
+        { new ConflictException("duplicado"), StatusCodes.Status409Conflict },
         { new BusinessException("regra"), StatusCodes.Status422UnprocessableEntity },
         { new InvalidOperationException("falha"), StatusCodes.Status500InternalServerError }
     };
