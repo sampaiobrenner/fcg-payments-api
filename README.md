@@ -86,6 +86,8 @@ docker build -t fcg-payments-api .
 
 Imagem multi-stage (`sdk:10.0` -> `aspnet:10.0`), usuario non-root, porta `8080`.
 
+A cada push na `main` (e tag `v*`) a imagem e publicada em `ghcr.io/sampaiobrenner/fcg-payments-api` pelo workflow [`docker.yml`](.github/workflows/docker.yml), que reutiliza o [`docker-publish.yml`](https://github.com/sampaiobrenner/fcg-orchestration/blob/main/.github/workflows/docker-publish.yml) do `fcg-orchestration`.
+
 ## Kubernetes
 
 Manifests em [`k8s/`](k8s): `deployment.yaml`, `service.yaml` (`payments-api:80`), `configmap.yaml`, `secret.yaml`.

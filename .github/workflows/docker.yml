@@ -1,0 +1,15 @@
+name: Docker
+
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+
+jobs:
+  publish:
+    uses: sampaiobrenner/fcg-orchestration/.github/workflows/docker-publish.yml@main
+    with:
+      image-name: fcg-payments-api
+    permissions:
+      contents: read
+      packages: write
