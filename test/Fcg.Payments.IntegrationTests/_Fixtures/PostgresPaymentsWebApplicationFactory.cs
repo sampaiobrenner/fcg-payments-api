@@ -33,6 +33,9 @@ public sealed class PostgresPaymentsWebApplicationFactory : WebApplicationFactor
             builder.UseSetting(key, value);
 
         builder.ConfigureTestServices(services => services.AddMassTransitTestHarness(harness =>
-            harness.SetTestTimeouts(testTimeout: TimeSpan.FromSeconds(30), testInactivityTimeout: TimeSpan.FromSeconds(5))));
+        {
+            harness.AddConsumer<PaymentProcessedProbeConsumer>();
+            harness.SetTestTimeouts(testTimeout: TimeSpan.FromSeconds(30), testInactivityTimeout: TimeSpan.FromSeconds(5));
+        }));
     }
 }
