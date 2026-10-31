@@ -22,6 +22,54 @@ namespace Fcg.Payments.Infrastructure._Shared.Context.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
+            modelBuilder.Entity("Fcg.Payments.Domain.Payments.PaymentModel", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uuid")
+                        .HasColumnName("id");
+
+                    b.Property<decimal>("Amount")
+                        .HasPrecision(10, 2)
+                        .HasColumnType("numeric(10,2)")
+                        .HasColumnName("amount");
+
+                    b.Property<Guid>("GameId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("game_id");
+
+                    b.Property<Guid>("OrderId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("order_id");
+
+                    b.Property<DateTime>("ProcessedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("processed_at");
+
+                    b.Property<string>("Reason")
+                        .HasMaxLength(300)
+                        .HasColumnType("character varying(300)")
+                        .HasColumnName("reason");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("character varying(20)")
+                        .HasColumnName("status");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("user_id");
+
+                    b.HasKey("Id")
+                        .HasName("pk_payments");
+
+                    b.HasIndex("OrderId")
+                        .IsUnique()
+                        .HasDatabaseName("ix_payments_order_id");
+
+                    b.ToTable("payments", (string)null);
+                });
+
             modelBuilder.Entity("MassTransit.EntityFrameworkCoreIntegration.InboxState", b =>
                 {
                     b.Property<long>("Id")

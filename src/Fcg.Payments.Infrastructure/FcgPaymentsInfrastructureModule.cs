@@ -1,8 +1,10 @@
 using Fcg.Payments.Application._Shared.Contexts;
 using Fcg.Payments.Application._Shared.Messaging;
 using Fcg.Payments.Domain._Shared.Modules;
+using Fcg.Payments.Domain.Payments;
 using Fcg.Payments.Infrastructure._Shared.Context;
 using Fcg.Payments.Infrastructure._Shared.Messaging;
+using Fcg.Payments.Infrastructure.Payments;
 using Fcg.Payments.Infrastructure.Properties;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -31,5 +33,7 @@ public sealed class FcgPaymentsInfrastructureModule : IModule
 
         services.AddScoped<IPaymentsDbContext>(provider => provider.GetRequiredService<PaymentsDbContext>());
         services.AddScoped<IIntegrationEventPublisher, MassTransitIntegrationEventPublisher>();
+
+        services.AddScoped<IPaymentRepository, PaymentRepository>();
     }
 }

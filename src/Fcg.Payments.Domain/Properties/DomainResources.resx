@@ -15,4 +15,10 @@
   <data name="CampoObrigatorio" xml:space="preserve">
     <value>O campo {0} é obrigatório.</value>
   </data>
+  <data name="ValorDoPagamentoNegativo" xml:space="preserve">
+    <value>O valor do pagamento não pode ser negativo.</value>
+  </data>
+  <data name="ValorExcedeLimiteDeAprovacao" xml:space="preserve">
+    <value>Valor {0:0.00} excede o limite de aprovação {1:0.00}</value>
+  </data>
 </root>
