@@ -15,4 +15,10 @@
   <data name="RecursoNaoEncontrado" xml:space="preserve">
     <value>{0} '{1}' não encontrado(a).</value>
   </data>
+  <data name="CampoObrigatorio" xml:space="preserve">
+    <value>O campo {0} é obrigatório.</value>
+  </data>
+  <data name="Pagamento" xml:space="preserve">
+    <value>Pagamento</value>
+  </data>
 </root>
